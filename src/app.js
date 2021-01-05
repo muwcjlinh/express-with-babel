@@ -1,6 +1,8 @@
 import express from 'express';
 import path from 'path';
 import logger from 'morgan';
+import cors from 'cors';
+import db from './models/index';
 require('dotenv').config();
 
 import indexRouter from './routes/index';
@@ -8,6 +10,15 @@ import usersRouter from './routes/users';
 
 let app = express();
 
+if (process.env.ENV == 'DEV') {
+  db.sequelize.sync({ force: true }).then(() => {
+    console.log("Drop and re-sync db.");
+  });
+} else {
+  db.sequelize.sync();
+}
+
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
