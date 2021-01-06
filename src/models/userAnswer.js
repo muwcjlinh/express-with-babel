@@ -7,7 +7,6 @@ export default (sequelize) => {
       references: {
         model: {
           tableName: 'sites',
-          // schema: 'schema'
         },
         key: 'id'
       },

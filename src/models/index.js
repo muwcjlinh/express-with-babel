@@ -21,9 +21,9 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
+db.sites = site(sequelize);
 db.questions = question(sequelize);
 db.answers = answer(sequelize);
-db.sites = site(sequelize);
 db.user_answers = userAnswer(sequelize);
 
 export default db;
