@@ -1,7 +1,11 @@
 import dbConfig from '../config/db';
 import Sequelize from 'sequelize';
+import question from './question';
+import answer from './answer';
+import site from './site';
+import userAnswer from './userAnswer';
 
-export const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
+const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   host: dbConfig.HOST,
   dialect: dbConfig.dialect,
   // operatorsAliases: false,
@@ -16,5 +20,10 @@ export const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASS
 const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
+
+db.questions = question(sequelize);
+db.answers = answer(sequelize);
+db.sites = site(sequelize);
+db.user_answers = userAnswer(sequelize);
 
 export default db;
