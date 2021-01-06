@@ -1,9 +1,10 @@
+// https://bezkoder.com/node-js-express-sequelize-mysql/
+require('dotenv').config();
 import express from 'express';
 import path from 'path';
 import logger from 'morgan';
 import cors from 'cors';
 import db from './models/index';
-require('dotenv').config();
 
 import indexRouter from './routes/index';
 import usersRouter from './routes/users';
